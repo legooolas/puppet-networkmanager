@@ -7,7 +7,7 @@ class networkmanager(
   $openconnect_connections = {},
   $openvpn_connections     = {},
   $wifi_connections        = {},
-  $dot1X_connections       = {},
+  $dot1x_connections       = {},
 ) {
 
   if $gui != undef {
