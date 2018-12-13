@@ -15,7 +15,7 @@ define networkmanager::dot1x (
 #  $ignore_phase2_ca_cert  = false,
 ) {
 
-  Class['networkmanager::install'] -> Networkmanager::Wifi[$title]
+  Class['networkmanager::install'] -> Networkmanager::Dot1x[$title]
 
   file { "/etc/NetworkManager/system-connections/${name}":
     ensure => $ensure,
