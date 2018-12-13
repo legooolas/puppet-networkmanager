@@ -2,7 +2,7 @@ class networkmanager::install (
   $nm_package       = $::networkmanager::params::nm_package,
   $nm_gnome_package = $::networkmanager::params::nm_gnome_package,
   $nm_kde_package   = $::networkmanager::params::nm_kde_package,
-) {
+) inherits networkmanager::params {
   package { $nm_package:
     ensure => $::networkmanager::version,
   }
