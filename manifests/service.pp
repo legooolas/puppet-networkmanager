@@ -1,10 +1,12 @@
 class networkmanager::service {
+  include ::networkmanager::params
+
   $ensure = $::networkmanager::start ? {
     true    => running,
     default => stopped,
   }
 
-  service { 'network-manager':
+  service { $::networkmanager::params::nm_service:
     ensure => $ensure,
     enable => $::networkmanager::enable,
   }
