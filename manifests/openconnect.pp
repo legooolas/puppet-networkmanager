@@ -16,12 +16,14 @@ define networkmanager::openconnect (
 
   Class['networkmanager::install'] -> Networkmanager::Openconnect[$title]
 
+  # TODO : params for RHEL package names
   ensure_resource(
     'package', 'network-manager-openconnect', { ensure => present, }
   )
 
   case $::networkmanager::gui {
     'gnome': {
+      # TODO : params for RHEL package names
       ensure_resource(
         'package', 'network-manager-openconnect-gnome', { ensure => present, }
       )

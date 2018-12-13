@@ -21,12 +21,14 @@ define networkmanager::openvpn (
 
   Class['networkmanager::install'] -> Networkmanager::Openvpn[$title]
 
+  # TODO : params for RHEL package names
   ensure_resource(
     'package', 'network-manager-openvpn', { ensure => present, }
   )
 
   case $::networkmanager::gui {
     'gnome': {
+      # TODO : params for RHEL package names
       ensure_resource(
         'package', 'network-manager-openvpn-gnome', { ensure => present, }
       )

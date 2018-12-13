@@ -1,15 +1,15 @@
 class networkmanager::install {
-  package { 'network-manager':
+  package { $::networkmanager::params::nm_package:
     ensure => $::networkmanager::version,
   }
   case $::networkmanager::gui {
     'gnome': {
-      package { 'network-manager-gnome':
+      package { $::networkmanager::params::nm_gnome_package:
         ensure => $::networkmanager::version,
       }
     }
     'kde': {
-      package { 'plasma-nm':
+      package { $::networkmanager::params::nm_kde_package:
         ensure => present,
       }
     }
