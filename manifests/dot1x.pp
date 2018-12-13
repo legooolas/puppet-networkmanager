@@ -3,6 +3,7 @@ define networkmanager::dot1x (
   $ca_cert,
   $eap,
   $identity,
+  $password,
   $phase2_auth,
   $autoconnect_priority,
   $duplex,
