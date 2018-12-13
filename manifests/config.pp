@@ -2,6 +2,7 @@ class networkmanager::config {
   validate_hash($::networkmanager::openconnect_connections)
   validate_hash($::networkmanager::openvpn_connections)
   validate_hash($::networkmanager::wifi_connections)
+  validate_hash($::networkmanager::dot1x_connections)
 
   create_resources(
     'networkmanager::openconnect',
@@ -16,5 +17,10 @@ class networkmanager::config {
   create_resources(
     'networkmanager::wifi',
     $::networkmanager::wifi_connections
+  )
+
+  create_resources(
+    'networkmanager::dot1x',
+    $::networkmanager::dot1x_connections
   )
 }

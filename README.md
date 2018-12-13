@@ -44,6 +44,14 @@ networkmanager::wifi { 'My Wifi Connection 0':
   phase2_auth        => 'mschapv2',
   password_raw_flags => 1,
 }
+
+networkmanager::dot1x { 'My 802.1X Connection 0':
+  user               => 'foo',
+  eap                => 'ttls',
+  phase2_auth        => 'mschapv2',
+  password_raw_flags => 1,
+  # TODO : examples for more params!
+}
 ```
 
 Reference
@@ -58,6 +66,7 @@ Resources:
 * [networkmanager::openconnect](#resource-networkmanageropenconnect)
 * [networkmanager::openvpn](#resource-networkmanageropenvpn)
 * [networkmanager::wifi](#resource-networkmanagerwifi)
+* [networkmanager::dot1x](#resource-networkmanagerdot1x)
 
 ###Class: networkmanager
 
@@ -72,6 +81,9 @@ A hash of OpenVPN connections to declare.
 
 ####`wifi_connections`
 A hash of Wifi connections to declare.
+
+####`dot1x_connections`
+A hash of 802.1X connections to declare.
 
 ####`start`
 Should the service be started by Puppet. Defaults to `true`.
@@ -209,3 +221,9 @@ The user who can use the connection.
 ####`uuid`
 The UUID of the connection. Default to MD5 of `name`.
 
+
+###resource: networkmanager::dot1x
+
+####`...`
+
+TODO : Describe dot1x settings here!
