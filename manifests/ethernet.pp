@@ -1,9 +1,9 @@
 # See README.md for details.
 define networkmanager::ethernet (
   $autoconnect_priority,
-  $duplex,
   $interface,
   $ensure      = present,
+  $duplex      = 'full',
   $ipv4_method = 'auto',
   $ipv6_method = 'auto',
 ) {
@@ -47,11 +47,11 @@ define networkmanager::ethernet (
     }
 
     # section: 803-3-ethernet
-    ini_setting { "${name}/802-3-ethernet/duplex":
-      section => '802-3-ethernet',
-      setting => 'duplex',
-      value   => $duplex,
-    }
+    #ini_setting { "${name}/802-3-ethernet/duplex":
+    #  section => '802-3-ethernet',
+    #  setting => 'duplex',
+    #  value   => $duplex,
+    #}
 
     # section: connection
     ini_setting { "${name}/connection/id":
@@ -64,6 +64,12 @@ define networkmanager::ethernet (
       section => 'connection',
       setting => 'type',
       value   => '802-3-ethernet',
+    }
+
+    ini_setting { "${name}/connection/interface-name":
+      section => 'connection',
+      setting => 'interface-name',
+      value   => "${interface};",
     }
 
     ini_setting { "${name}/connection/autoconnect-priority":
@@ -84,12 +90,6 @@ define networkmanager::ethernet (
       section => 'ipv6',
       setting => 'method',
       value   => $ipv6_method,
-    }
-
-    ini_setting { "${name}/connection/interface-name":
-      section => 'connection',
-      setting => 'interface-name',
-      value   => "${interface};",
     }
   }
 }
