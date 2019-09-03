@@ -46,11 +46,12 @@ networkmanager::wifi { 'My Wifi Connection 0':
 }
 
 networkmanager::dot1x { 'My 802.1X Connection 0':
-  user               => 'foo',
-  eap                => 'ttls',
-  phase2_auth        => 'mschapv2',
-  password_raw_flags => 1,
-  # TODO : examples for more params!
+  ca_cert              => '/etc/ssl/certs/some-other-ca.crt',
+  eap                  => 'peap',
+  identity             => "host/${::hostname}",
+  password             => 'password',
+  phase2_auth          => 'mschapv2',
+  autoconnect_priority => 5,
 }
 ```
 
@@ -227,3 +228,9 @@ The UUID of the connection. Default to MD5 of `name`.
 ####`...`
 
 TODO : Describe dot1x settings here!
+
+###resource: networkmanager::ethernet
+
+####`...`
+
+TODO : Describe wired ethernet settings here!

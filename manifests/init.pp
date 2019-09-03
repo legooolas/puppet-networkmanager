@@ -8,6 +8,7 @@ class networkmanager(
   $openvpn_connections     = {},
   $wifi_connections        = {},
   $dot1x_connections       = {},
+  $ethernet_connections    = {},
 ) {
 
   if $gui != undef {
